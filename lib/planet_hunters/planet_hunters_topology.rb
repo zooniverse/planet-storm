@@ -1,20 +1,15 @@
 require './spouts/classifications_spout'
 require 'red_storm'
 
-class PHTopology < RedStorm::DSL::Topology
+class PlanetHuntersTopology < RedStorm::DSL::Topology
 
   spout ClassificationsSpout, parallelism: 2 do
-    output_fields :classification_json
-  end
-
-  bolt ParseJSON, parallelism: 2 do
     output_fields :classification
-    source ClassificationsSpout, :shuffle
   end
 
   bolt Split, parallelism: 2 do
     output_fields :marking, :subject_id
-    source ParseJSON, :shuffle
+    source ClassificationSpout, :shuffle
   end
 
   bolt Cluster, parallelism: 2 do
