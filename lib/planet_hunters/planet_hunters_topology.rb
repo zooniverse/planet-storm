@@ -7,7 +7,7 @@ class PlanetHuntersTopology < RedStorm::DSL::Topology
     output_fields :classification
   end
 
-  bolt Split, parallelism: 2 do
+  bolt SplitBolt, parallelism: 2 do
     output_fields :marking, :subject_id
     source ClassificationSpout, :shuffle
   end
