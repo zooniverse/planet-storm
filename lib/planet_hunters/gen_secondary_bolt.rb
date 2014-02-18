@@ -6,7 +6,7 @@ class GenSecondary
     if t.ready?
       sub = Subject.from_id(t[:subject_id])
       transit = sub.points.filter do |p|
-        t.contains?(p)
+        t.contains?(p.x)
       end
       [Subject.from_old(sub, transit).to_json]
     end

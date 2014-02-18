@@ -1,8 +1,7 @@
 require 'red_storm'
-require 'redis'
-require '../models/transit'
+require './transit'
 
-class Cluster < RedStorm::DSL::Bolt
+class ClusterBolt < RedStorm::DSL::Bolt
   on_init do 
     @transits = Hash.new{|h,k| h[k] = []}
   end
