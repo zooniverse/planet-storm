@@ -1,13 +1,7 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
-gem 'redstorm'
-
-group :mongo_classifications_spout do
-  gem 'mongo'
-  gem 'bson'
-  gem 'bson_ext'
-end
+gem 'redstorm', git: "git@github.com:colinsurprenant/redstorm.git"
 
 group :development, :test do
   gem 'rake'
