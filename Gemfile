@@ -1,7 +1,7 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
-gem 'redstorm', git: "git@github.com:colinsurprenant/redstorm.git"
+gem 'redstorm', "~> 0.7.0.beta1"
 
 group :development, :test do
   gem 'rake'
